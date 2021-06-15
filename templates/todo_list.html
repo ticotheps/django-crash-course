@@ -6,6 +6,11 @@
     <title>Django Crash Course</title>
 </head>
 <body>
+    {% if request.user.is_authenticated %}
+        Hello {{ request.user.username }}
+    {% else %}
+        Hello anonymous user
+    {% endif %}
     <ul>
     {% for todo in todo_list %}
         <li>{{ todo.name }}, it's due {{ todo.due_date }}</li>
