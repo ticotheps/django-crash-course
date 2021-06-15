@@ -6,6 +6,10 @@
     <title>Django Crash Course</title>
 </head>
 <body>
-    Hello World
+    <ul>
+    {% for todo in todo_list %}
+        <li>{{ todo.name }}, it's due {{ todo.due_date }}</li>
+    {% endfor %}
+    </ul>
 </body>
 </html>
