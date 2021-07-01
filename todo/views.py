@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Todo
 
-# generates full list of all todo items
+# The LIST view - Generates a full list of every todo item.
 def todo_list(request):
     todos = Todo.objects.all()
     print(todos)
@@ -11,7 +11,7 @@ def todo_list(request):
     }
     return render(request, "todo_list.html", context)
 
-# Read any todo item based on id
+# The READ view - Retrieves any todo item based on the todo's id.
 def todo_read(request, id):
     todo = Todo.objects.get(id=id)
     context = {
