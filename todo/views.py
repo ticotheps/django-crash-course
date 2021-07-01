@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Todo
 from .forms import TodoForm  
 
@@ -15,7 +15,7 @@ def todo_list(request):
 
 # CREATE view - allows creation of a new todo object via a form.
 def todo_create(request):
-    # populates the 'TodoForm' only if the HTTP request is a POST request.
+    # pass data into the 'TodoForm' only if this is a POST request.
     form = TodoForm(request.POST or None)
     if form.is_valid():
         # # print(form.cleaned_data)
@@ -25,8 +25,10 @@ def todo_create(request):
         
         # # create a new todo object
         # new_todo = Todo.objects.create(name=name, due_date=due_date)
+        
         form.save()
-
+        # redirect the user back to the todo list
+        return redirect("/")
     context = {
         "form": form
     }
