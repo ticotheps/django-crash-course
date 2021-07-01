@@ -17,6 +17,7 @@ def todo_list(request):
 def todo_create(request):
     # pass data into the 'TodoForm' only if this is a POST request.
     form = TodoForm(request.POST or None)
+    # Use Django's 'forms' module to validate the data passed into the form.
     if form.is_valid():
         # # print(form.cleaned_data)
         # name = form.cleaned_data['name']
