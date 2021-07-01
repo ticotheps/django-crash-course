@@ -36,10 +36,19 @@ def todo_create(request):
     return render(request, "todo_create.html", context)
 
 
-# READ view - Retrieves any todo item based on the todo's id.
+# READ view - retrieves any todo item based on the todo's id.
 def todo_read(request, id):
     todo = Todo.objects.get(id=id)
     context = {
         "todo": todo
     }
     return render(request, "todo_read.html", context)
+
+
+# UPDATE view - updates any todo item based on the todo's id.
+def todo_update(request, id):
+    todo = Todo.objects.get(id=id)
+    context = {
+        "todo": todo
+    }
+    return render(request, "todo_update.html", context)
