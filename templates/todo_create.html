@@ -9,8 +9,7 @@
     <h1>Create a Todo!</h1>
     <form method="POST">
         {% csrf_token %}
-        <input name="name" />
-        <input name="due_date" />
+        {{ form }}
         <button type="submit">Submit</button>
     </form>
 </body>

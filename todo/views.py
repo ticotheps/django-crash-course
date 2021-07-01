@@ -20,7 +20,9 @@ def todo_create(request):
     if form.is_valid():
         # create a new todo object.
         pass
-    context = {}
+    context = {
+        "form": form
+    }
     return render(request, "todo_create.html", context)
 
 
