@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django Crash Course</title>
+    <title>Todo List</title>
 </head>
 <body>
     {% if request.user.is_authenticated %}
@@ -11,6 +11,10 @@
     {% else %}
         Hello, anonymous user!
     {% endif %}
+    <br/>
+    <br/>
+    <a href="/create">Create a New Todo</a>
+
     <ul>
     {% for todo in todo_list %}
         <li><a href="/{{ todo.id }}">{{ todo.name }}</a>, it's due {{ todo.due_date }}</li>
