@@ -60,3 +60,11 @@ def todo_update(request, id):
         "form": form
     }
     return render(request, "todo_update.html", context)
+
+
+# DELETE view - removes any todo item based on the todo's id.
+def todo_delete(request, id):
+    # todo = Todo.objects.filter(id=id).delete()
+    todo = Todo.objects.get(id=id)
+    todo.delete()
+    return redirect("/")
