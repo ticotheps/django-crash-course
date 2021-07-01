@@ -1,19 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <h2 class="text-center mt-3 mb-5">
     {% if request.user.is_authenticated %}
-        <h2>Hi, {{ request.user.username }}!</h2>
+        Hi, {{ request.user.username }}!
     {% else %}
-        <h2>Hello, anonymous user!</h2>
+        Hello, anonymous user!
     {% endif %}
-
-    <h4>Here are your todo items:</h4>
-    <ul>
-    {% for todo in todo_list %}
-        <li><a href="/{{ todo.id }}">{{ todo.name }}</a>, it's due {{ todo.due_date }}</li>
-    {% endfor %}
-    </ul>
-    <br/>
-    <br/>
-    <a href="/create">Create a New Todo</a>
+    </h2>
+    <div class="col-4 offset-4">
+        <h4>Here are your todo items:</h4>
+        {% for todo in todo_list %}
+            <div class="card mt-3">
+                <div class="card-header">
+                    <a href="/{{ todo.id }}">{{ todo.name }}</a>
+                </div>
+                <div class="card-body">
+                    <p>Due: {{ todo.due_date }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <br/>
+        <br/>
+        <a class="btn btn-primary" href="/create">Create a New Todo</a>
+    </div>
 {% endblock %}
