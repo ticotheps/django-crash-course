@@ -10,7 +10,7 @@ def todo_list(request):
     context = {
         "todo_list": todos
     }
-    return render(request, "todo_list.html", context)
+    return render(request, "todo/todo_list.html", context)
 
 
 # CREATE view - allows creation of a new todo object via a form.
@@ -33,7 +33,7 @@ def todo_create(request):
     context = {
         "form": form
     }
-    return render(request, "todo_create.html", context)
+    return render(request, "todo/todo_create.html", context)
 
 
 # READ view - retrieves any todo item based on the todo's id.
@@ -42,7 +42,7 @@ def todo_read(request, id):
     context = {
         "todo": todo
     }
-    return render(request, "todo_read.html", context)
+    return render(request, "todo/todo_read.html", context)
 
 
 # UPDATE view - updates any todo item based on the todo's id.
@@ -59,7 +59,7 @@ def todo_update(request, id):
     context = {
         "form": form
     }
-    return render(request, "todo_update.html", context)
+    return render(request, "todo/todo_update.html", context)
 
 
 # DELETE view - removes any todo item based on the todo's id.
