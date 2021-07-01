@@ -7,9 +7,9 @@
 </head>
 <body>
     {% if request.user.is_authenticated %}
-        Hello {{ request.user.username }}
+        Hi, {{ request.user.username }}!
     {% else %}
-        Hello anonymous user
+        Hello, anonymous user!
     {% endif %}
     <ul>
     {% for todo in todo_list %}
