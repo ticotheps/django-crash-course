@@ -1,27 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2 class="text-center mt-3 mb-5">
-    {% if request.user.is_authenticated %}
-        Hi, {{ request.user.username }}!
-    {% else %}
-        Hello, anonymous user!
-    {% endif %}
-    </h2>
-    <div class="col-4 offset-4">
-        <h4>Here are your todo items:</h4>
-        {% for todo in todo_list %}
-            <div class="card mt-3">
-                <div class="card-header">
-                    <a href="/{{ todo.id }}">{{ todo.name }}</a>
+    <div class="text-center">
+        <h2 class="text-center mt-3 mb-5">
+            {% if request.user.is_authenticated %}
+                Hi, {{ request.user.username }}!
+            {% else %}
+                Hello, anonymous user!
+            {% endif %}
+        </h2>
+        <div class="col-4 offset-4">
+            <h4>Here are your todo items:</h4>
+            {% for todo in todo_list %}
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <a class="nav-link" href="/{{ todo.id }}">{{ todo.name }}</a>
+                    </div>
+                    <div class="card-body">
+                        <p>Due: {{ todo.due_date }}</p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p>Due: {{ todo.due_date }}</p>
-                </div>
-            </div>
-        {% endfor %}
-        <br/>
-        <br/>
-        <a class="btn btn-primary" href="/create">Create a New Todo</a>
+            {% endfor %}
+            <br/>
+            <br/>
+            <a class="btn btn-primary" href="/create">Create a New Todo</a>
+        </div>
     </div>
 {% endblock %}
