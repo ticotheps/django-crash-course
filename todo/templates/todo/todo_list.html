@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
-</head>
-<body>
-    {% if request.user.is_authenticated %}
-        Hi, {{ request.user.username }}!
-    {% else %}
-        Hello, anonymous user!
-    {% endif %}
-    <br/>
-    <br/>
-    <a href="/create">Create a New Todo</a>
+{% extends "base.html" %}
 
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <h2>Hi, {{ request.user.username }}!</h2>
+    {% else %}
+        <h2>Hello, anonymous user!</h2>
+    {% endif %}
+
+    <h4>Here are your todo items:</h4>
     <ul>
     {% for todo in todo_list %}
         <li><a href="/{{ todo.id }}">{{ todo.name }}</a>, it's due {{ todo.due_date }}</li>
     {% endfor %}
     </ul>
-</body>
-</html>
+    <br/>
+    <br/>
+    <a href="/create">Create a New Todo</a>
+{% endblock %}

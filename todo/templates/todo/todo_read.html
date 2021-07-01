@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo Item #{{ todo.id }}</title>
-</head>
-<body>
-    <h1>Todo Name: {{ todo.name }}</h1>
-    <h2>Due Date: {{ todo.due_date }}</h2>
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Todo Name: {{ todo.name }}</h3>
+    <h4>Due Date: {{ todo.due_date }}</h4>
     <br/>
     <br/>
     <a href="/{{ todo.id }}/update">Update this todo item</a>
     <br/>
     <a href="/{{ todo.id }}/delete">Delete this todo item</a>
-</body>
-</html>
+{% endblock %}
