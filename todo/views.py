@@ -47,8 +47,16 @@ def todo_read(request, id):
 
 # UPDATE view - updates any todo item based on the todo's id.
 def todo_update(request, id):
+    # retrieve a todo object by id.
     todo = Todo.objects.get(id=id)
+    # pass data into the 'TodoForm' only if this is a POST request.
+    form = TodoForm(request.POST or None, instance=todo)
+    # Use Django's 'forms' module to validate the data passed into the form.
+    if form.is_valid():
+        form.save()
+        # redirect the user back to the todo list
+        return redirect("/")
     context = {
-        "todo": todo
+        "form": form
     }
     return render(request, "todo_update.html", context)
