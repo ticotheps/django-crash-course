@@ -9,7 +9,7 @@
     <h1>Create a Todo!</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
 </body>
